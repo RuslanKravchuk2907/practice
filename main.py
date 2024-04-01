@@ -1,27 +1,17 @@
-greeting = 'Hello, World!'
-print(greeting)
+import requests
 
-line01 = "********************"
-line01 = "********************"
-line01 = "********************"
+api_key = "ce60a1aceca0248db7eea997147cc2c1"
 
-import math
+user_input = input("Enter city: ")
 
+weather_data = requests.get(
+    f"https://api.openweathermap.org/data/2.5/weather?q={user_input}&units=imperial&APPID={api_key}")
 
-def get_plan(current_production: int, months: int, percent: int) -> list:
-    production_plan = []  # Ініціалізуємо список для зберігання плану виробництва
+if weather_data.json()['cod'] == '404':
+    print("No city found")
+else:
+    weather = weather_data.json()['weather'][0]['main']
+    temp = round(weather_data.json()['main']['temp'])
 
-    for _ in range(months):
-        # Додаємо до плану виробництва поточну кількість роботів для поточного місяця
-        production_plan.append(current_production)
-        # Збільшуємо поточну кількість роботів на величину відсотку
-        current_production += current_production * percent / 100
-
-    return list(map(math.floor, production_plan))
-
-
-# Приклад використання:
-current_production = 1000  # Починаємо рахунок від 1000, а не від 0
-months = 6  # Збільшуємо кількість місяців на 1
-percent = 35
-print(get_plan(current_production, months, percent))
+    print(f"The weather in {user_input} is: {weather}")
+    print(f"The temperature in {user_input} is: {temp}°C")
