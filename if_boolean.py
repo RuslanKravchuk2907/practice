@@ -69,5 +69,11 @@ fizz_buzz(15)
 fizz_buzz(17)
 
 
+work_done = True
+day_finished = False
 
+#  Write code here
+can_go_home = work_done or day_finished
+
+print(can_go_home)
 
