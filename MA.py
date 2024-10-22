@@ -51,3 +51,17 @@ print(f"{y3=}, {type(y3)=}")
 
 y5 = 42_000_000e6       # 42_000_000 / 10 ** 6
 print(f"{y5=}, {type(y5)=}")
+
+# Century From Year
+def get_century(year: int) -> int:
+    if year <= 0:
+        return 1  # Літочислення починається з 1 року н.е.
+
+    # Визначення століття для року
+    return (year - 1) // 100 + 1
+
+
+print(get_century(2001))  # 21
+print(get_century(0))  # 1
+print(get_century(1786))  # 18
+print(get_century(1500))  # 15
