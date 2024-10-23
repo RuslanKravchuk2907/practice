@@ -65,3 +65,126 @@ print(get_century(2001))  # 21
 print(get_century(0))  # 1
 print(get_century(1786))  # 18
 print(get_century(1500))  # 15
+
+
+def is_even(number: float) -> bool:
+    if not isinstance(number, int):
+        return False
+    return number % 2 == 0
+
+
+print(is_even(100))
+print(is_even(0))
+print(is_even(77))
+print(is_even(10.2))
+print(is_even(-2))
+
+
+
+
+
+# Get Rectangle Area
+import math
+
+
+def get_rectangle_area(side: int, diagonal: int) -> float | str:
+    if side <= 0 or diagonal <= 0:
+        return "not a rectangle"
+    if diagonal <= side:
+        return "not a rectangle"
+    under_sqrt = diagonal**2 - side**2
+    if under_sqrt <= 0:
+        return "not a rectangle"
+    other_side = math.sqrt(under_sqrt)
+    area = side * other_side
+    return round(area, 1)
+
+
+print(get_rectangle_area(10, 20))
+print(get_rectangle_area(9, 18))
+print(get_rectangle_area(100, 98))
+print(get_rectangle_area(-5, 10))
+print(get_rectangle_area(0, 10))
+print(get_rectangle_area(10, 0))
+
+
+# number checker
+
+import math
+
+
+def number_checker(number: float) -> list:
+    return [math.isinf(number), math.isnan(number)]
+
+
+print(number_checker(1))                # [False, False]
+print(number_checker(-1e10000))         # [True, False]
+print(number_checker(float("nan")))     # [False, True]
+
+
+
+# Make Decision
+def make_decision(
+    fuel_remaining: int,
+    distance: int,
+    fuel_consumption: float
+) -> str:
+    if fuel_remaining < 0 or distance < 0 or fuel_consumption <= 0:
+        return "please, enter the valid data"
+    required_fuel = (distance / 100) * fuel_consumption
+    if fuel_remaining >= required_fuel:
+        return "reach gas station by themselves"
+    else:
+        return "ask for help"
+
+
+print(make_decision(5, 50, 0))
+print(make_decision(-1, 50, 6.5))
+print(make_decision(5, -50, 6.5))
+print(make_decision(0, 0, 6.5))
+print(make_decision(10, 50, 5))
+print(make_decision(2, 50, 5))
+
+
+# count networking
+
+def count_networking(quarantine_length: int, frequency: int) -> int:
+    # Якщо карантин триває весь рік або довше, вечірок не буде
+    if quarantine_length >= 12:
+        return 0
+
+    # Перший місяць після завершення карантину
+    start_month = quarantine_length + 1
+
+    # Підраховуємо кількість вечірок
+    party_count = 0
+    for month in range(start_month, 13):
+        if (month - start_month) % frequency == 0:
+            party_count += 1
+
+    return party_count
+
+
+print(count_networking(0, 1))  # 12 (кожен місяць)
+print(count_networking(3, 1))  # 9 (місяці 4-12)
+print(count_networking(3, 2))  # 5 (місяці 4, 6, 8, 10, 12)
+print(count_networking(12, 1))  # 0 (карантин на весь рік)
+print(count_networking(11, 3))  # 1 (місяць 12)
+print(count_networking(2, 5))  # 2 (місяці 3 і 8)
+print(count_networking(3, 4))  # 3 (місяці 4, 8, 12)
+
+
+
+# Generate Random List
+
+import random
+
+
+def generate_random_list(min_value: int, max_value: int, length: int) -> list:
+    # Генеруємо список із випадковими числами заданої довжини
+    return [random.randint(min_value, max_value) for _ in range(length)]
+
+
+print(generate_random_list(1, 1, 1))   # [1]
+print(generate_random_list(1, 3, 5))   # Наприклад, [2, 3, 1, 1, 3]
+print(generate_random_list(-1, 1, 3))  # Наприклад, [0, -1, 1]
