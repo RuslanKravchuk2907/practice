@@ -188,3 +188,39 @@ def generate_random_list(min_value: int, max_value: int, length: int) -> list:
 print(generate_random_list(1, 1, 1))   # [1]
 print(generate_random_list(1, 3, 5))   # Наприклад, [2, 3, 1, 1, 3]
 print(generate_random_list(-1, 1, 3))  # Наприклад, [0, -1, 1]
+
+
+
+# For loop
+
+sum_of_number = 0
+#  Write code here
+for number in range(5, 16):
+    sum_of_number += number
+
+
+print(sum_of_number)
+
+
+sum_of_number = 0
+#  Write code here
+for number in range(5, 16, 2):
+    sum_of_number += number
+
+
+print(sum_of_number)
+
+
+# Print the Progress
+
+initial_distance = 5
+increment = 2
+total_weeks = 10
+
+# Копія початкової дистанції для обчислень
+current_distance = initial_distance
+
+# Цикл для обчислення дистанції кожного тижня
+for week in range(1, total_weeks + 1):
+    print(current_distance)
+    current_distance += increment
