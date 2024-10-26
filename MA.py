@@ -261,3 +261,136 @@ def get_lists_sum(lis1, lis2):
 print(get_lists_sum([1, 2], [3, 4]))  # Виведе: 10
 print(get_lists_sum([1, 2, 3, 4], [5, 6, 7, 8]))  # Виведе: 36
 print(get_lists_sum([], []))
+
+
+def sum_two_lists(list1, list2):
+    result_list = []
+
+    # Перебираємо елементи обох списків одночасно
+    for i in range(len(list1)):
+        # Додаємо відповідні елементи та додаємо результат до result_list
+        result_list.append(list1[i] + list2[i])
+
+    return result_list
+
+
+# Приклади виклику функції
+print(sum_two_lists([1, 2], [3, 4]))  # Виведе: [4, 6]
+print(sum_two_lists([1, 2, 3, 4], [5, 6, 7, 8]))  # Виведе: [6, 8, 10, 12]
+print(sum_two_lists([], []))  # Виведе: []
+
+def remove_vowels(document):
+    vowels = "aeiouyAEIOUY"  # Всі голосні, як великі, так і малі
+    result_string = ""       # Рядок для збереження результату без голосних
+
+    # Ітеруємо по кожному символу в document
+    for char in document:
+        # Додаємо символ до result_string, якщо він не є голосною
+        if char not in vowels:
+            result_string += char
+
+    return result_string
+
+# Приклади виклику функції
+print(remove_vowels("captain"))       # Виведе: "cptn"
+print(remove_vowels("I like my boss"))  # Виведе: " lk m bss"
+print(remove_vowels("350 euro"))      # Виведе: "350 r"
+
+
+def make_stickers(details_count, robot_part):
+    stickers = []  # Порожній список для збереження наліпок
+
+    # Ітеруємо від 1 до details_count включно
+    for n in range(1, details_count + 1):
+        # Додаємо рядок з форматом "{robot_part} detail #{n}"
+        stickers.append(f"{robot_part} detail #{n}")
+
+    return stickers
+
+
+# Приклади виклику функції
+print(make_stickers(3, "Body"))  # Виведе: ["Body detail #1", "Body detail #2", "Body detail #3"]
+print(make_stickers(4, "Head"))  # Виведе: ["Head detail #1", "Head detail #2", "Head detail #3", "Head detail #4"]
+print(make_stickers(0, "Foot"))  # Виведе: []
+
+def double_power(current_powers):
+    # Повертаємо новий список з подвоєними значеннями кожного елемента
+    return [power * 2 for power in current_powers]
+
+# Приклади виклику функції
+print(double_power([100, 150, 200, 220]))  # Виведе: [200, 300, 400, 440]
+print(double_power([45, 34, 56, 67]))      # Виведе: [90, 68, 112, 134]
+print(double_power([]))                    # Виведе: []
+
+
+def get_location(coordinates, commands):
+    x, y = coordinates  # Ініціалізуємо початкові координати
+
+    for command in commands:
+        if command == "forward":
+            y += 1
+        elif command == "back":
+            y -= 1
+        elif command == "right":
+            x += 1
+        elif command == "left":
+            x -= 1
+
+    return [x, y]  # Повертаємо кінцеві координати
+
+
+# Приклади виклику функції
+print(get_location([0, 0], ["forward", "right"]))  # Виведе: [1, 1]
+print(get_location([2, 3], ["back", "back", "back", "right"]))  # Виведе: [3, 0]
+print(get_location([0, 5], ["back", "back", "back", "right", "left", "forward"]))  # Виведе: [0, 3]
+
+
+def is_sorted(box_numbers):
+    # Перевіряємо, чи всі елементи списку розташовані в порядку зростання
+    for i in range(len(box_numbers) - 1):
+        if box_numbers[i] > box_numbers[i + 1]:  # Якщо поточний елемент більший за наступний
+            return False  # Список не відсортований, повертаємо False
+    return True  # Якщо всі елементи в порядку, повертаємо True
+
+# Приклади виклику функції
+print(is_sorted([1, 2, 3, 4, 5]))  # Виведе: True
+print(is_sorted([0, 1, 1, 1, 2]))  # Виведе: True
+print(is_sorted([1, 2, 11]))  # Виведе: True
+print(is_sorted([5]))  # Виведе: True
+print(is_sorted([]))  # Виведе: True
+print(is_sorted([0, 3, 1, 2, 2, 2]))  # Виведе: False
+print(is_sorted([1, 11, 2]))  # Виведе: False
+
+import math
+
+def get_plan(current_production, months, percent):
+    plan = []
+    for _ in range(months):
+        current_production = math.floor(current_production * (1 + percent / 100))
+        plan.append(current_production)
+    return plan
+
+# Приклади виклику функції
+print(get_plan(200, 3, 50))  # Виведе: [300, 450, 675]
+print(get_plan(10, 4, 30))   # Виведе: [13, 16, 20, 26]
+print(get_plan(1000, 6, 20)) # Виведе: [1200, 1440, 1728, 2073, 2487, 2984]
+
+from math import floor
+
+
+def get_speed_statistic(test_results):
+    if not test_results:
+        return [0, 0, 0]
+
+    min_speed = min(test_results)
+    max_speed = max(test_results)
+    average_speed = floor(sum(test_results) / len(test_results))
+
+    return [min_speed, max_speed, average_speed]
+
+
+# Приклади виклику функції
+print(get_speed_statistic([]))  # Виведе: [0, 0, 0]
+print(get_speed_statistic([10]))  # Виведе: [10, 10, 10]
+print(get_speed_statistic([8, 9, 3, 12]))  # Виведе: [3, 12, 8]
+print(get_speed_statistic([10, 10, 11, 9, 12, 8]))  # Виведе: [8, 12, 10]
