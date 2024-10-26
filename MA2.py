@@ -4,3 +4,4 @@ def add_numbers(a: int, b: int) -> int:
 
 
 add_numbers(2, "3")
+
