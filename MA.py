@@ -224,3 +224,40 @@ current_distance = initial_distance
 for week in range(1, total_weeks + 1):
     print(current_distance)
     current_distance += increment
+
+# Functions
+
+def add_interest(balance, interest_rate):
+    #  Write code here
+    return balance * (1 + interest_rate / 100)
+
+
+initial_balance = 1000
+new_balance = add_interest(initial_balance, 5)
+result_balance = add_interest(new_balance, 5)
+
+print(result_balance)
+
+
+
+
+def temperature(value):
+    #  Write code here
+    if value < 20:
+        return "Cold"
+    elif  20 <= value <= 50:
+        return "Warm"
+    else:
+        return "Hot"
+temperature(51)
+
+
+# List + List
+def get_lists_sum(lis1, lis2):
+    # Повертаємо суму всіх елементів двох списків
+    return sum(lis1) + sum(lis2)
+
+# Приклади виклику функції
+print(get_lists_sum([1, 2], [3, 4]))  # Виведе: 10
+print(get_lists_sum([1, 2, 3, 4], [5, 6, 7, 8]))  # Виведе: 36
+print(get_lists_sum([], []))
