@@ -1,19 +1,17 @@
-import pdb
+def find_max(numbers):
+    if not numbers:
+        return None  # Повертаємо None, якщо список порожній
 
-# def add_numbers(a: int, b: int) -> int:
-#     print(f"Adding {type(a)} and {type(b)}")
-#     return a + b
-#
-#
-# add_numbers(2, "3")
+    max_num = numbers[0]  # Ініціалізуємо max_num першим елементом списку
+    for num in numbers:
+        if num > max_num:
+            max_num = num
+    return max_num
 
 
-numbers = [1, "2", 3]
+# Тести функції
+print(find_max([3, 5, 7, 2, 8]))  # Виведе: 8
+print(find_max([-10, -5, -1, -20]))  # Виведе: -1
+print(find_max([42]))  # Виведе: 42
+print(find_max([]))  # Виведе: None
 
-my_sum = 0
-
-for number in numbers:
-    pdb.set_trace()
-    my_sum += number
-
-    print(my_sum)
